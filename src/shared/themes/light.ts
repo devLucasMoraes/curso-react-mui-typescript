@@ -20,4 +20,4 @@ export const LightTheme = createTheme({
             paper: '#f7f6f3'
         }
     }
-})
+});

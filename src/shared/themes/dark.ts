@@ -20,4 +20,4 @@ export const DarkTheme = createTheme({
             paper: '#202124'
         }
     }
-})
+});
