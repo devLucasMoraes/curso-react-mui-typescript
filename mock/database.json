@@ -1,12 +1,6 @@
 {
   "pessoas": [
     {
-      "id": 1,
-      "email": "devlucasmoraes@gmail.com",
-      "cidadeId": 1,
-      "nomeCompleto": "Lucas Moraes"
-    },
-    {
       "id": 2,
       "email": "devlucasmoraes@gmail.com",
       "cidadeId": 1,
