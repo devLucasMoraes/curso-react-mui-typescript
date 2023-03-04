@@ -1,11 +1,18 @@
 import { LinearProgress } from '@mui/material';
 import { Form } from '@unform/web';
-import { useEffect, useState } from 'react';
+import { FormHandles } from '@unform/core';
+import { useEffect, useState, useRef } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { FerramentasDeDetalhe } from '../../shared/components';
 import { VTextField } from '../../shared/forms';
 import { LayoutBaseDePagina } from '../../shared/layouts';
 import { PessoasService } from '../../shared/services/api/pessoas/PessoasService';
+
+interface IFormData {
+    email: string;
+    cidadeId: string;
+    nomeCompleto: string;
+}
 
 
 export const DetalheDePessoas: React.FC = () => {
@@ -13,6 +20,8 @@ export const DetalheDePessoas: React.FC = () => {
     const { id = 'nova' } = useParams<'id'>();
 
     const navigate = useNavigate();
+
+    const formRef = useRef<FormHandles>(null);
 
     const [isLoading, setIsLoading] = useState(false);
     const [nome, setNome] = useState('');
@@ -37,8 +46,8 @@ export const DetalheDePessoas: React.FC = () => {
         }
     }, [id]);
 
-    const handleSave = () => {
-        console.log('Save');
+    const handleSave = (dados: IFormData) => {
+        console.log(dados);
     };
     const handleDelete = (id: number) => {
         if (confirm('Realmente deseja apagar?')) {
@@ -67,15 +76,25 @@ export const DetalheDePessoas: React.FC = () => {
                     aoClicaeEmNovo={() => navigate('/pessoas/detalhe/nova')}
                     aoClicaeEmVoltar={() => navigate('/pessoas')}
                     aoClicaeEmApagar={() => handleDelete(Number(id))}
-                    aoClicaeEmSalvar={handleSave}
-                    aoClicaeEmSalvarEVoltar={handleSave}
+                    aoClicaeEmSalvar={() => formRef.current?.submitForm()}
+                    aoClicaeEmSalvarEVoltar={() => formRef.current?.submitForm()}
                 />
             }
         >
-            <Form onSubmit={(dados) => console.log(dados)}>
-                <VTextField 
-                    name='nomeCompleto'
-                />
+            <Form ref={formRef} onSubmit={dados => handleSave(dados)}>
+                <VTextField name='nomeCompleto' />
+                <VTextField name='email' />
+                <VTextField name='cidadeId' />
+
+                {/*   {[1,2,3,4].map((_, index)=> (
+                    <>
+                        <VTextField name={`endereco[${index}].rua`}/>
+                        <VTextField name={`endereco[${index}].numero`}/>
+                        <VTextField name={`endereco[${index}].estado`}/>
+                        <VTextField name={`endereco[${index}].cidade`}/>
+                    </>
+                ))} */}
+
                 <button type='submit'>submit</button>
             </Form>
 
