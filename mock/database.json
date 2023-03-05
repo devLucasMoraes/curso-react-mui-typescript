@@ -1,14 +1,8 @@
 {
   "pessoas": [
     {
-      "id": 2,
-      "nomeCompleto": "Lucas S J S Moraes",
-      "email": "trismegistolucas1@gmail.com",
-      "cidadeId": "Feira de Santana"
-    },
-    {
       "id": 3,
-      "nomeCompleto": "Lucas S J S Moraes",
+      "nomeCompleto": "Lucas sssa",
       "email": "trismegistolucas1@gmail.com",
       "cidadeId": "Feira de Santana"
     },

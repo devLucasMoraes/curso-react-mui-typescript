@@ -1,4 +1,4 @@
-import { LinearProgress } from '@mui/material';
+import { Box, Grid, LinearProgress, Paper, Typography } from '@mui/material';
 import { Form } from '@unform/web';
 import { FormHandles } from '@unform/core';
 import { useEffect, useState, useRef } from 'react';
@@ -62,7 +62,7 @@ export const DetalheDePessoas: React.FC = () => {
                 });
         } else {
             PessoasService
-                .updateById(Number(id), {id: Number(id),...dados})
+                .updateById(Number(id), { id: Number(id), ...dados })
                 .then((result) => {
                     setIsLoading(false);
                     if (result instanceof Error) {
@@ -103,15 +103,57 @@ export const DetalheDePessoas: React.FC = () => {
                 />
             }
         >
-            
-            {isLoading && (
-                <LinearProgress variant='indeterminate' />
-            )}
-
             <Form ref={formRef} onSubmit={dados => handleSave(dados)}>
-                <VTextField placeholder='Nome completo' name='nomeCompleto' />
-                <VTextField placeholder='Email' name='email' />
-                <VTextField placeholder='Cidade id' name='cidadeId' />
+                <Box margin={1} display="flex" flexDirection='column' component={Paper} variant="outlined">
+                    <Grid container direction='column' padding={2} spacing={2}>
+
+                        {isLoading && (
+                            <Grid item>
+                                <LinearProgress variant='indeterminate' />
+                            </Grid>
+                        )}
+
+                        <Grid item>
+                            <Typography variant='h6'>Geral</Typography>
+                        </Grid>
+
+                        <Grid container item direction='row'>
+                            <Grid item xs={12} sm={12} md={6} lg={4} xl={2}>
+                                <VTextField
+                                    fullWidth
+                                    label='Nome completo'
+                                    name='nomeCompleto'
+                                    disabled={isLoading}
+                                    onChange={e => setNome(e.target.value)}
+                                />
+                            </Grid>
+                        </Grid>
+
+                        <Grid container item direction='row'>
+                            <Grid item xs={12} sm={12} md={6} lg={4} xl={2}>
+                                <VTextField
+                                    fullWidth
+                                    label='Email'
+                                    name='email'
+                                    disabled={isLoading}
+                                />
+                            </Grid>
+                        </Grid>
+
+                        <Grid container item direction='row'>
+                            <Grid item xs={12} sm={12} md={6} lg={4} xl={2}>
+                                <VTextField
+                                    fullWidth
+                                    label='Cidade id'
+                                    name='cidadeId'
+                                    disabled={isLoading}
+                                />
+                            </Grid>
+                        </Grid>
+
+                    </Grid>
+
+                </Box>
 
                 {/*   {[1,2,3,4].map((_, index)=> (
                     <>
@@ -121,8 +163,6 @@ export const DetalheDePessoas: React.FC = () => {
                         <VTextField name={`endereco[${index}].cidade`}/>
                     </>
                 ))} */}
-
-                <button type='submit'>submit</button>
             </Form>
         </LayoutBaseDePagina>
     );
