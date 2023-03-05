@@ -10,7 +10,7 @@ import { PessoasService } from '../../shared/services/api/pessoas/PessoasService
 
 interface IFormData {
     email: string;
-    cidadeId: string;
+    cidadeId: number;
     nomeCompleto: string;
 }
 
@@ -41,13 +41,35 @@ export const DetalheDePessoas: React.FC = () => {
                     } else {
                         setNome(result.nomeCompleto);
                         console.log(result);
+                        formRef.current?.setData(result);
                     }
                 });
         }
     }, [id]);
 
     const handleSave = (dados: IFormData) => {
-        console.log(dados);
+        setIsLoading(true);
+        if (id === 'nova') {
+            PessoasService
+                .create(dados)
+                .then((result) => {
+                    setIsLoading(false);
+                    if (result instanceof Error) {
+                        alert(result.message);
+                    } else {
+                        navigate(`/pessoas/detalhe/${result}`);
+                    }
+                });
+        } else {
+            PessoasService
+                .updateById(Number(id), {id: Number(id),...dados})
+                .then((result) => {
+                    setIsLoading(false);
+                    if (result instanceof Error) {
+                        alert(result.message);
+                    }
+                });
+        }
     };
     const handleDelete = (id: number) => {
         if (confirm('Realmente deseja apagar?')) {
@@ -81,10 +103,15 @@ export const DetalheDePessoas: React.FC = () => {
                 />
             }
         >
+            
+            {isLoading && (
+                <LinearProgress variant='indeterminate' />
+            )}
+
             <Form ref={formRef} onSubmit={dados => handleSave(dados)}>
-                <VTextField name='nomeCompleto' />
-                <VTextField name='email' />
-                <VTextField name='cidadeId' />
+                <VTextField placeholder='Nome completo' name='nomeCompleto' />
+                <VTextField placeholder='Email' name='email' />
+                <VTextField placeholder='Cidade id' name='cidadeId' />
 
                 {/*   {[1,2,3,4].map((_, index)=> (
                     <>
@@ -97,10 +124,6 @@ export const DetalheDePessoas: React.FC = () => {
 
                 <button type='submit'>submit</button>
             </Form>
-
-            {isLoading && (
-                <LinearProgress variant='indeterminate' />
-            )}
         </LayoutBaseDePagina>
     );
 };
