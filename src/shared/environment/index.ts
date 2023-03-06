@@ -14,5 +14,5 @@ export const Environment = {
     /* 
     * Url base de consultado dos dados dessa aplicação
     */
-    URL_BASE: 'https://json-server-api-curso-react-mui-typescript.vercel.app'
+    URL_BASE: 'https://localhost:3333'
 };
