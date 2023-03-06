@@ -2,9 +2,9 @@
   "pessoas": [
     {
       "id": 3,
-      "nomeCompleto": "Lucas teste1",
+      "nomeCompleto": "teste",
       "email": "trismegistolucas1@gmail.com",
-      "cidadeId": "Feira de Santana"
+      "cidadeId": 7
     },
     {
       "id": 4,
@@ -68,6 +68,26 @@
     },
     {
       "id": 2,
+      "nome": "ilheus"
+    },
+    {
+      "id": 3,
+      "nome": "ituacu"
+    },
+    {
+      "id": 4,
+      "nome": "vitoria da conquista"
+    },
+    {
+      "id": 5,
+      "nome": "serrinha"
+    },
+    {
+      "id": 6,
+      "nome": "araci"
+    },
+    {
+      "id": 7,
       "nome": "salvador"
     }
   ]
