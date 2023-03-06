@@ -60,5 +60,15 @@
       "email": "trismegistolucas1@gmail.com",
       "cidadeId": "1"
     }
+  ],
+  "cidades": [
+    {
+      "id": 1,
+      "nome": "feira de santana"
+    },
+    {
+      "id": 2,
+      "nome": "salvador"
+    }
   ]
 }
