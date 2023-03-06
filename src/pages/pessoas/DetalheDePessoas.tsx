@@ -130,10 +130,10 @@ export const DetalheDePessoas: React.FC = () => {
                     mostrarBotaoSalvarEVoltar
                     mostrarBotaoNovo={id !== 'nova'}
 
-                    aoClicaeEmNovo={save}
+                    aoClicaeEmNovo={() => navigate('/pessoas/detalhe/nova')}
                     aoClicaeEmVoltar={() => navigate('/pessoas')}
                     aoClicaeEmApagar={() => handleDelete(Number(id))}
-                    aoClicaeEmSalvar={() => formRef.current?.submitForm()}
+                    aoClicaeEmSalvar={save}
                     aoClicaeEmSalvarEVoltar={saveAndClose}
                 />
             }
