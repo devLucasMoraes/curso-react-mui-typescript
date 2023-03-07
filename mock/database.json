@@ -1,12 +1,6 @@
 {
   "pessoas": [
     {
-      "id": 3,
-      "nomeCompleto": "teste",
-      "email": "trismegistolucas1@gmail.com",
-      "cidadeId": 7
-    },
-    {
       "id": 4,
       "email": "devlucasmoraes@gmail.com",
       "cidadeId": 1,
@@ -49,16 +43,16 @@
       "id": 10
     },
     {
-      "nomeCompleto": "Lucas S J S Moraes",
-      "email": "trismegistolucas1@gmail.com",
-      "cidadeId": "Feira de Santana",
-      "id": 11
-    },
-    {
       "id": 12,
       "nomeCompleto": "LUCAS SAMUEL DE JESUS SOUZA MORAES",
       "email": "trismegistolucas1@gmail.com",
       "cidadeId": "1"
+    },
+    {
+      "nomeCompleto": "LUCAS SAMUEL DE JESUS SOUZA MORAES",
+      "email": "trismegistolucas1@gmail.ocm",
+      "cidadeId": 1,
+      "id": 13
     }
   ],
   "cidades": [
@@ -79,16 +73,16 @@
       "nome": "vitoria da conquista"
     },
     {
-      "id": 5,
-      "nome": "serrinha"
-    },
-    {
       "id": 6,
       "nome": "araci"
     },
     {
       "id": 7,
       "nome": "salvador"
+    },
+    {
+      "nome": "lauro de freitas",
+      "id": 8
     }
   ]
 }
